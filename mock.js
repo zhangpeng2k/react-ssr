@@ -13,7 +13,7 @@ app.get('/api/user/info',(req,res)=>{
         code:0,
         data:{
             name:'kkb',
-            best:'pony'
+            best:'大圣老师'
         }
     })
 })
