@@ -2,6 +2,22 @@
 
 const express = require('express')
 const app =express()
+
+
+
+app.get('/api/user/info',(req,res)=>{
+    res.header('Access-Control-Allow-Origin','*')
+    res.header('Access-Control-Allow-Methods','GET,POST')
+    res.header('Content-type',"application/json;charset=utf-8")
+    res.json({
+        code:0,
+        data:{
+            name:'kkb',
+            best:'pony'
+        }
+    })
+})
+
 app.get('/api/course/list',(req,res)=>{
     res.header('Access-Control-Allow-Origin','*')
     res.header('Access-Control-Allow-Methods','GET,POST')
@@ -19,6 +35,6 @@ app.get('/api/course/list',(req,res)=>{
 })
 
 
-app.listen('9090',()=>{
-    console.log('mock启动完毕')
+app.listen('9091',()=>{
+    console.log('mock启动完毕!')
 })

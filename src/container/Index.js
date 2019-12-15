@@ -5,8 +5,11 @@ import {getIndexList} from '../store/index'
 function Index(props){
     const [count,setCount] = useState(1)
     useEffect(()=>{
-        props.getIndexList()
-    })
+        if(!props.list.length){
+            props.getIndexList()
+        }
+        
+    },[])
     return <div>
         <h1>hello {props.title}! {count}</h1>
         <button onClick={()=>{setCount(count+1)}}>add</button>
@@ -18,7 +21,9 @@ function Index(props){
         </ul>
     </div>
 }
-
+Index.loadData = (sotre) =>{
+    return sotre.dispatch(getIndexList())
+}
 export default connect(
     state=>({list:state.index.list}),
     {getIndexList}
