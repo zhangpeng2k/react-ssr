@@ -7,13 +7,25 @@ import {Provider} from 'react-redux'
 import {getServerStore} from '../src/store/store'
 import routes from '../src/App'
 import Header from '../src/component/Header';
+import proxy from 'http-proxy-middleware'
 
 
 const store = getServerStore()
 const app = express()
 app.use(express.static('public'))
+
+//客户端api开头
+app.use('/api',proxy({
+    target:'http://localhost:9090',
+    changeOrigin:true
+}))
+
 app.get('*',(req,res)=>{
     // 获取根据路由渲染出的组件，并且拿到loadData方法，获取数据
+    
+    // if(req.url.startsWith('/api/')){
+    //     //不渲染页面 使用axios转发
+    // }
 
     // 存储网络请求
     const promises = []
@@ -24,25 +36,19 @@ app.get('*',(req,res)=>{
         if(match){
             const {loadData} = route.component
             if(loadData){
+                // 包装后
                 const promise = new Promise((resolve,reject)=>{
-                    loadData(store).then(resolve).catch(reject)
+                    loadData(store).then(resolve).catch(resolve)
                 })
                 promises.push(promise)
+                // promises.push(loadData(promise))
+                
             }
             
         }
     })
     // 等待所有网络请求结束再渲染
-    Promise.all(promises.map(promise=>{
-        promise.then(()=>{
-            // do nothing...
-
-            // 带胜老师很牛批 XD
-        }).catch(e=>{
-            console.log('有请求出错了：',e.response.status);
-            // 这里应该reject出去吗？ (思考...
-        })
-    })).then(()=>{
+    Promise.all(promises).then(()=>{
         
         // 把react组件解析成html
         const content = renderToString(
@@ -70,8 +76,8 @@ app.get('*',(req,res)=>{
         </body>
         </html>
         `)
-    }).catch((reason)=>{
-        
+    }).catch((error)=>{
+        console.log(error)
         res.send('报错页面500')
     })
     

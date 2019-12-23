@@ -12,8 +12,8 @@ const changeList = list => ({
 })
 
 export const getIndexList = server => {
-    return(dispatch, getState, axiosInstance)=> {
-        return Axios.get('http://localhost:9091/api/course/list')
+    return(dispatch, getState, $axios)=> {
+        return $axios.get('/api/course/list')
             .then(res => {
                 const { list } = res.data;
                 dispatch(changeList(list));

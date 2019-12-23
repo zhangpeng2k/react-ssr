@@ -3,6 +3,7 @@ const nodeExternals = require('webpack-node-externals')
 // 服务端的webpack
 module.exports = {
     target:"node",
+    devtool:'source-map',
     mode:"development",
     entry:'./server/index.js',
     externals:[nodeExternals()],

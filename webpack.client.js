@@ -5,6 +5,7 @@ module.exports = {
     mode:"development",
     // 客户端入口
     entry:'./client/index.js',
+    devtool:'source-map',
     // 客户端输出
     output:{
         filename:'bundle.js',
