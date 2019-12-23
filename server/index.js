@@ -24,8 +24,12 @@ app.get('*',(req,res)=>{
         if(match){
             const {loadData} = route.component
             if(loadData){
-                promises.push(loadData(store))
+                const promise = new Promise((resolve,reject)=>{
+                    loadData(store).then(resolve).catch(reject)
+                })
+                promises.push(promise)
             }
+            
         }
     })
     // 等待所有网络请求结束再渲染
