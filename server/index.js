@@ -2,7 +2,7 @@
 import React from 'react'
 import {renderToString} from 'react-dom/server'
 import express from 'express'
-import {StaticRouter,matchPath,Route} from 'react-router-dom'
+import {StaticRouter,matchPath,Route, Switch} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import {getServerStore} from '../src/store/store'
 import routes from '../src/App'
@@ -49,18 +49,30 @@ app.get('*',(req,res)=>{
     })
     // 等待所有网络请求结束再渲染
     Promise.all(promises).then(()=>{
-        
+        const context = {}
         // 把react组件解析成html
         const content = renderToString(
             <Provider store={store}>
-                <StaticRouter location={req.url}>
+                <StaticRouter location={req.url} context={context}>
                     <Header></Header>
+                    <Switch>
                     {routes.map(route=>{
                         return <Route {...route}></Route>
                     })}
+                    </Switch>
+                    
                 </StaticRouter>
             </Provider>
         )
+        // console.log('context',context)
+        if(context.statuscode){
+            // 状态切换和页面跳转
+            res.status(context.statuscode)
+        }
+        if(context.action =="REPLACE"){
+            res.redirect(301,context.url)
+        }
+
         res.send(`
         <html>
         <head>
