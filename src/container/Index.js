@@ -1,8 +1,14 @@
 import React,{useState,useEffect} from 'react'
 import {connect} from 'react-redux'
 import {getIndexList} from '../store/index'
+import styles  from './Index.css'
+import withStyle from '../withStyle'
+
 
 function Index(props){
+    if(props.staticContext){
+        props.staticContext.css.push(styles._getCss())
+    }
     const [count,setCount] = useState(1)
     useEffect(()=>{
         if(!props.list.length){
@@ -10,8 +16,8 @@ function Index(props){
         }
         
     },[])
-    return <div>
-        <h1>hello {props.title}! {count}</h1>
+    return <div className={styles.container}>
+        <h1 className={styles.title}>hello {props.title}! {count}</h1>
         <button onClick={()=>{setCount(count+1)}}>add</button>
         <hr/>
         <ul>
@@ -27,4 +33,4 @@ Index.loadData = (sotre) =>{
 export default connect(
     state=>({list:state.index.list}),
     {getIndexList}
-)(Index)
+)(withStyle(Index,styles))

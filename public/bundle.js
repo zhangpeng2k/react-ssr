@@ -118,7 +118,12 @@ var Page = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redu
 }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_component_Header__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, _src_App__WEBPACK_IMPORTED_MODULE_4__["default"].map(function (route) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], route);
 }))));
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.hydrate(Page, document.getElementById('root'));
+
+if (window._context) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.hydrate(Page, document.getElementById('root'));
+}
+
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(Page, document.getElementById('root'));
 
 /***/ }),
 
@@ -1979,19 +1984,44 @@ module.exports = function isBuffer (obj) {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/App.css":
-/*!***********************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/App.css ***!
-  \***********************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js?!./src/container/About.css":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./src/container/About.css ***!
+  \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "body{\n    color: red;\n}", ""]);
+exports.push([module.i, "._23oxpawoFSQdYw5Hq5hrwc{\n    color: red;\n}", ""]);
 // Exports
+exports.locals = {
+	"title": "_23oxpawoFSQdYw5Hq5hrwc"
+};
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js?!./src/container/Index.css":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./src/container/Index.css ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".aAiUyk9qcIP7eNHyurrvu{\n    color: blue;\n}\n._3vyhR7weaY-SmwPjI0Hoy7{\n    background: yellow;\n}", ""]);
+// Exports
+exports.locals = {
+	"title": "aAiUyk9qcIP7eNHyurrvu",
+	"container": "_3vyhR7weaY-SmwPjI0Hoy7"
+};
 module.exports = exports;
 
 
@@ -40825,38 +40855,6 @@ module.exports = function(originalModule) {
 
 /***/ }),
 
-/***/ "./src/App.css":
-/*!*********************!*\
-  !*** ./src/App.css ***!
-  \*********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var api = __webpack_require__(/*! ../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-            var content = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js!./App.css */ "./node_modules/css-loader/dist/cjs.js!./src/App.css");
-
-            content = content.__esModule ? content.default : content;
-
-            if (typeof content === 'string') {
-              content = [[module.i, content, '']];
-            }
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var id = "!!../node_modules/css-loader/dist/cjs.js!./App.css";
-var update = api(id, content, options);
-
-var exported = content.locals ? content.locals : {};
-
-
-
-module.exports = exported;
-
-/***/ }),
-
 /***/ "./src/App.js":
 /*!********************!*\
   !*** ./src/App.js ***!
@@ -40873,15 +40871,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _container_About__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./container/About */ "./src/container/About.js");
 /* harmony import */ var _container_User__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./container/User */ "./src/container/User.js");
 /* harmony import */ var _container_Notfound__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./container/Notfound */ "./src/container/Notfound.js");
-/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./App.css */ "./src/App.css");
-/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_App_css__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
 
 
-
- // export default (
+ // import './App.css'
+// export default (
 //     <div>
 //         <Route path="/" exact component={Index}></Route>
 //         <Route path="/about" exact component={About}></Route>
@@ -40906,7 +40902,8 @@ __webpack_require__.r(__webpack_exports__);
   exact: true,
   key: 'user'
 }, {
-  component: _container_Notfound__WEBPACK_IMPORTED_MODULE_5__["default"]
+  component: _container_Notfound__WEBPACK_IMPORTED_MODULE_5__["default"],
+  key: 'notfound'
 }]);
 
 /***/ }),
@@ -40939,6 +40936,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/container/About.css":
+/*!*********************************!*\
+  !*** ./src/container/About.css ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js??ref--5-1!./About.css */ "./node_modules/css-loader/dist/cjs.js?!./src/container/About.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var id = "!!../../node_modules/css-loader/dist/cjs.js??ref--5-1!./About.css";
+var update = api(id, content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+
 /***/ "./src/container/About.js":
 /*!********************************!*\
   !*** ./src/container/About.js ***!
@@ -40950,13 +40979,50 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _About_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./About.css */ "./src/container/About.css");
+/* harmony import */ var _About_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_About_css__WEBPACK_IMPORTED_MODULE_1__);
+
 
 
 function About(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "\u5173\u4E8E"));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: _About_css__WEBPACK_IMPORTED_MODULE_1___default.a.title
+  }, "\u5173\u4E8E"));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (About);
+
+/***/ }),
+
+/***/ "./src/container/Index.css":
+/*!*********************************!*\
+  !*** ./src/container/Index.css ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js??ref--5-1!./Index.css */ "./node_modules/css-loader/dist/cjs.js?!./src/container/Index.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var id = "!!../../node_modules/css-loader/dist/cjs.js??ref--5-1!./Index.css";
+var update = api(id, content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
 
 /***/ }),
 
@@ -40973,6 +41039,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/index */ "./src/store/index.js");
+/* harmony import */ var _Index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Index.css */ "./src/container/Index.css");
+/* harmony import */ var _Index_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Index_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _withStyle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../withStyle */ "./src/withStyle.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -40985,7 +41054,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 function Index(props) {
+  if (props.staticContext) {
+    props.staticContext.css.push(_Index_css__WEBPACK_IMPORTED_MODULE_3___default.a._getCss());
+  }
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
       _useState2 = _slicedToArray(_useState, 2),
       count = _useState2[0],
@@ -40996,7 +41071,11 @@ function Index(props) {
       props.getIndexList();
     }
   }, []);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "hello ", props.title, "! ", count), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: _Index_css__WEBPACK_IMPORTED_MODULE_3___default.a.container
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: _Index_css__WEBPACK_IMPORTED_MODULE_3___default.a.title
+  }, "hello ", props.title, "! ", count), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: function onClick() {
       setCount(count + 1);
     }
@@ -41017,7 +41096,7 @@ Index.loadData = function (sotre) {
   };
 }, {
   getIndexList: _store_index__WEBPACK_IMPORTED_MODULE_2__["getIndexList"]
-})(Index));
+})(Object(_withStyle__WEBPACK_IMPORTED_MODULE_4__["default"])(Index, _Index_css__WEBPACK_IMPORTED_MODULE_3___default.a)));
 
 /***/ }),
 
@@ -41270,6 +41349,33 @@ var defaultState = {
       return state;
   }
 });
+
+/***/ }),
+
+/***/ "./src/withStyle.js":
+/*!**************************!*\
+  !*** ./src/withStyle.js ***!
+  \**************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function withStyle(Comp, styles) {
+  return function (props) {
+    if (props.staticContext) {
+      props.staticContext.css.push(styles._getCss());
+    }
+
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Comp, props);
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (withStyle);
 
 /***/ })
 
